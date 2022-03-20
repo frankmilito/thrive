@@ -1,15 +1,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
 
-const config = {
-  headers: {
-    Authorization: `Token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-  },
-}
-
 export const getUserRepositories = createAsyncThunk(
   "repos/list",
-  async (user, {rejectWithValue, getState, dispatch}) => {
+  async (user, {rejectWithValue}) => {
     try {
       const {data} = await axios.get(
         `https://api.github.com/users/${user}/repos?per_page=30&sort=asc`
@@ -27,7 +21,7 @@ export const getUserRepositories = createAsyncThunk(
 
 export const getUserProfile = createAsyncThunk(
   "profile/list",
-  async (user, {rejectWithValue, getState, dispatch}) => {
+  async (user, {rejectWithValue}) => {
     try {
       const {data} = await axios.get(`https://api.github.com/users/${user}`)
 

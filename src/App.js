@@ -9,14 +9,13 @@ const App = () => {
 
   const [userInput, setUserInput] = useState("frankmilito")
   useEffect(() => {
-    // dispatch(getUserProfile(userInput))
-    // dispatch(getUserRepositories(userInput))
+    dispatch(getUserProfile(userInput))
+    dispatch(getUserRepositories(userInput))
   }, [dispatch, userInput])
 
   const repos = useSelector(state => state?.repos)
   const {profile, reposList, loading, error} = repos
 
-  console.log(repos)
   return (
     <>
       <section class="relative 2xl bg-gray-700 min-h-screen">

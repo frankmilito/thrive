@@ -19,11 +19,15 @@ const App = () => {
   console.log(repos)
   return (
     <>
-      <section class="relative 2xl bg-gray-800 min-h-screen">
+      <section class="relative 2xl bg-gray-700 min-h-screen">
         <div class="relative container px-4 mx-auto">
           <div class="text-center mb-20">
             <div class="flex justify-center">
-              <img class="h-64  rounded-lg object-cover" src={imgPic} alt="" />
+              <img
+                class="h-64  rounded-lg object-cover"
+                src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295429_960_720.png"
+                alt="bird avatar"
+              />
             </div>
 
             <h2 class="mt-10 mb-5 text-5xl font-bold font-heading text-indigo-300">

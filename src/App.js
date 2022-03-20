@@ -22,18 +22,14 @@ const App = () => {
       <section class="relative 2xl bg-gray-800 min-h-screen">
         <div class="relative container px-4 mx-auto">
           <div class="text-center mb-20">
-            {/* <span class="text-lg text-blue-400 font-bold">
-              Have a question?
-            </span> */}
             <div class="flex justify-center">
               <img class="h-64  rounded-lg object-cover" src={imgPic} alt="" />
             </div>
 
             <h2 class="mt-10 mb-5 text-5xl font-bold font-heading text-indigo-300">
-              GitHub Finder
+              GitHub User Finder
             </h2>
             <div className="mt-1 flex justify-center">
-              {/* input */}
               <input
                 type="text"
                 name="email"
@@ -45,11 +41,7 @@ const App = () => {
               />
             </div>
           </div>
-          {/* Content goes here */}
           {loading ? (
-            // <h1 className="text-green-300 text-3xl text-center">
-            //   Loading please wait ...
-            // </h1>
             <Oval color="#818cf8" height={80} width={"100%"} />
           ) : error ? (
             <h2 className="text-red-300 text-3xl text-center">
@@ -131,7 +123,6 @@ const App = () => {
                     </div>
                   </div>
                 </div>
-                {/* Repository list */}
                 <div class="w-full lg:w-1/2 px-4">
                   <h1 class="mb-8 lg:mb-4  text-white font-bold">
                     Repositories

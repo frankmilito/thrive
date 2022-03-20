@@ -51,7 +51,7 @@ function App() {
             </h1>
           ) : error ? (
             <h2 className="text-red-300 text-3xl text-center">
-              {error.message}
+              {error?.data?.message}
             </h2>
           ) : (
             <div class="max-w-4xl mx-auto">
@@ -134,9 +134,10 @@ function App() {
                   {reposList && reposList.length > 0
                     ? reposList.map(repo => (
                         <>
-                          <div class="py-6 px-8  bg-gray-600 rounded-lg">
+                          <div class="py-6 px-8 mb-4 bg-gray-600 rounded-lg">
                             <div class="flex items-center">
                               <a
+                                href={repo.html_url}
                                 target="_blank"
                                 class="text-lg  text-indigo-400"
                               >

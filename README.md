@@ -1,3 +1,7 @@
-## 🚀 Github Finder Application using react redux toolkit
+## How to run this project
 
-## 🔗 [Join my youtube channel for the tutorials](https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw)
+#### git clone this repository
+#### run yarn or npm install to install all dependencies used
+#### Finally run yarn start or npm start to serve the project locally
+
+

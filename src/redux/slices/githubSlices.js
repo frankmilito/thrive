@@ -8,6 +8,7 @@ export const getUserRepositories = createAsyncThunk(
       const {data} = await axios.get(
         `https://api.github.com/users/${user}/repos?per_page=30&sort=asc`
       )
+
       return data
     } catch (error) {
       if (!error?.response) {
@@ -23,6 +24,7 @@ export const getUserProfile = createAsyncThunk(
   async (user, {rejectWithValue, getState, dispatch}) => {
     try {
       const {data} = await axios.get(`https://api.github.com/users/${user}`)
+
       return data
     } catch (error) {
       if (!error?.response) {
@@ -37,9 +39,7 @@ export const getUserProfile = createAsyncThunk(
 
 const reposSlices = createSlice({
   name: "repos",
-  initialState: {
-    user: "franklin",
-  },
+  initialState: {},
   extraReducers: builder => {
     // *  Fetch list of repositories
     builder.addCase(getUserRepositories.pending, (state, action) => {

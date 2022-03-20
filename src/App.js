@@ -1,5 +1,20 @@
+import {useEffect, useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
 import imgPic from "./img/gith.svg"
+import {getUserRepositories, getUserProfile} from "./redux/slices/githubSlices"
+
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const [userInput, setUserInput] =useState('frankmilito')
+    // dispatch(getUserProfile("frankmilito"))
+    // dispatch(getUserRepositories("frankmilito"))
+  }, [dispatch])
+
+  const repos = useSelector(state => state.repos)
+
+  console.log(repos)
   return (
     <>
       <section class="relative 2xl bg-gray-800 min-h-screen">
@@ -23,11 +38,13 @@ function App() {
                 id="email"
                 className="shadow-sm text-center focus:ring-indigo-500 p-2 focus:border-indigo-500  sm:text-sm border-gray-300 w-full rounded-md lg:w-1/2"
                 placeholder="Search For User"
+                value={userInput}
+                onChange={e => setUserInput(e.target.value)}
               />
             </div>
           </div>
           {/* Content goes here */}
-
+            {loading? <h1 className="text-green-300 text-3xl text-center">Loading please wait ...</h1> : error? (<h2 className="text-red-300 text-3xl text-center">{error.message}</h2>)(
           <div class="max-w-4xl mx-auto">
             <div class="flex flex-wrap -mx-4 mb-20">
               <div class="w-full lg:w-1/2 px-4 mb-4 lg:mb-0">
@@ -143,6 +160,8 @@ function App() {
               </a>
             </div>
           </div>
+
+            )}
         </div>
       </section>
     </>

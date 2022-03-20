@@ -1,6 +1,15 @@
-import React from "react"
+import {useState, useEffect} from "react"
+import {useDispatch} from "react-redux"
+import {getUserRepositories, getUserProfile} from "../redux/slices/githubSlices"
 
-const HeaderInput = ({userInput, setUserInput}) => {
+const HeaderInput = () => {
+  const dispatch = useDispatch()
+
+  const [userInput, setUserInput] = useState("frankmilito")
+  useEffect(() => {
+    dispatch(getUserProfile(userInput))
+    dispatch(getUserRepositories(userInput))
+  }, [dispatch, userInput])
   return (
     <div class="text-center mb-20">
       <div class="flex justify-center">

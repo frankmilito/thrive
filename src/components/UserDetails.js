@@ -1,6 +1,9 @@
 import {Oval} from "react-loader-spinner"
+import {useSelector} from "react-redux"
 
-const UserDetails = ({loading, error, profile, reposList}) => {
+const UserDetails = () => {
+  const repos = useSelector(state => state?.repos)
+  const {profile, reposList, loading, error} = repos
   return (
     <>
       {loading ? (

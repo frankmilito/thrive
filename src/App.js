@@ -2,17 +2,18 @@ import {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import imgPic from "./img/gith.svg"
 import {getUserRepositories, getUserProfile} from "./redux/slices/githubSlices"
+import {Oval} from "react-loader-spinner"
 
-function App() {
+const App = () => {
   const dispatch = useDispatch()
 
   const [userInput, setUserInput] = useState("frankmilito")
   useEffect(() => {
-    dispatch(getUserProfile("frankmilito"))
-    dispatch(getUserRepositories("frankmilito"))
-  }, [dispatch])
+    dispatch(getUserProfile(userInput))
+    dispatch(getUserRepositories(userInput))
+  }, [dispatch, userInput])
 
-  const repos = useSelector(state => state.repos)
+  const repos = useSelector(state => state?.repos)
   const {profile, reposList, loading, error} = repos
 
   console.log(repos)
@@ -46,14 +47,15 @@ function App() {
           </div>
           {/* Content goes here */}
           {loading ? (
-            <h1 className="text-green-300 text-3xl text-center">
-              Loading please wait ...
-            </h1>
+            // <h1 className="text-green-300 text-3xl text-center">
+            //   Loading please wait ...
+            // </h1>
+            <Oval color="#818cf8" height={80} width={"100%"} />
           ) : error ? (
             <h2 className="text-red-300 text-3xl text-center">
               {error?.data?.message}
             </h2>
-          ) : (
+          ) : profile && Object.keys(profile).length > 0 ? (
             <div class="max-w-4xl mx-auto">
               <div class="flex flex-wrap -mx-4 mb-20">
                 <div class="w-full lg:w-1/2 px-4 mb-4 lg:mb-0">
@@ -131,6 +133,9 @@ function App() {
                 </div>
                 {/* Repository list */}
                 <div class="w-full lg:w-1/2 px-4">
+                  <h1 class="mb-8 lg:mb-4  text-white font-bold">
+                    Repositories
+                  </h1>
                   {reposList && reposList.length > 0
                     ? reposList.map(repo => (
                         <>
@@ -151,6 +156,8 @@ function App() {
                 </div>
               </div>
             </div>
+          ) : (
+            ""
           )}
         </div>
       </section>

@@ -1,4 +1,4 @@
-import imgPic from "./img/gith.svg";
+import imgPic from "./img/gith.svg"
 function App() {
   return (
     <>
@@ -146,7 +146,7 @@ function App() {
         </div>
       </section>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
